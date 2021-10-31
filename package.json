@@ -1,0 +1,7 @@
+{
+  "name": "lcb-gsheets",
+  "version": "1.0.0",
+  "dependencies": {
+    "googleapis": "^89.0.0"
+  }
+}
