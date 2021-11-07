@@ -11,25 +11,33 @@ async function getSheetsClient() {
 
  exports.main = async (req_x, res_x) => {
      const sheets = await getSheetsClient();
-     console.log('made sheets');
-     sheets.spreadsheets.values.get({
-         spreadsheetId: '1H_Z3GNWuOIb4xtjhToD7OVE3zcZDNDTQ3muX08E4SpU',
-         range: 'Sheet1!A:C',
-     }, (err, res) => {
-         console.log('callback entry');
-         if (err) {
-            console.log('The API returned an error: ' + err);
-            res.status(500).send(err);
-         }
-        const rows = res.data.values;
-        console.log("no error");
-        if (rows.length) {
-            console.log("got rows");
-            res.status(200).send(JSON.stringify(rows));
-        } else {
-            console.log("no data found");
-            res.status(404).send('No data found.');
+     let body;
+     if (typeof(req_x.body === 'string')) {
+        body = JSON.parse(req_x.body);
+     } else {
+        body = req_x.body;
+     }
+     const row = [
+        new Date().toLocaleDateString("en-US"),
+        body.user,
+        body.comment,
+        body.filename,
+     ];
+     sheets.spreadsheets.values.append({
+        spreadsheetId: '1H_Z3GNWuOIb4xtjhToD7OVE3zcZDNDTQ3muX08E4SpU',
+        range: 'Sheet1!A:D',
+        valueInputOption: 'USER_ENTERED',
+        resource: {
+            values: [
+                row
+            ]
         }
+     }, (err, res) => {
+        if (err) {
+           console.log('The API returned an error: ' + err);
+           res_x.status(500).send(err);
+        }
+        res_x.status(200).send();
      })
   };
   
