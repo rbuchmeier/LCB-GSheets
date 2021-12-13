@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "dependencies": {
     "googleapis": "^89.0.0"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^2.1.0"
+  },
+  "scripts": {
+    "start": "npx functions-framework --target=main"
   }
 }
