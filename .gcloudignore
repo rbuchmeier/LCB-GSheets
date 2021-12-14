@@ -14,6 +14,6 @@
 .gitignore
 
 node_modules
-#!include:.gitignore
+LICENSE
 
 .env
