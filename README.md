@@ -25,4 +25,10 @@ Please be aware which GSheet you are uploading to. Try to stay out of production
 
 ## Deployment
 
-There is currently no automation for deployment. Go to the [GCP Functions](https://console.cloud.google.com/functions) page, choose the Low Carbon Beef project (if you don't have access, reach out to Ryan Buchmeier, Allen DeHoff, or Colin Beal), edit the gsheet-comment function, copy-paste the code on the second page, and deploy.
+Deployment lives solely in [GCP Functions](https://console.cloud.google.com/functions) for the Low Carbon Beef project. If you don't have access, reach out to Ryan Buchmeier, Allen DeHoff, or Colin Beal.
+
+Deploy to test-function:
+`gcloud functions deploy gsheet-comment-test --source=. --project=hallowed-nectar-326021`
+
+Deploy to production-function:
+`gcloud functions deploy gsheet-comment --source=. --project=hallowed-nectar-326021`
