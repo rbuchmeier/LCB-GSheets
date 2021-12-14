@@ -9,6 +9,6 @@
     "@google-cloud/functions-framework": "^2.1.0"
   },
   "scripts": {
-    "start": "npx functions-framework --target=main"
+    "start": "npx functions-framework --target=main --port=8080"
   }
 }
