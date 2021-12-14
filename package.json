@@ -2,6 +2,7 @@
   "name": "lcb-gsheets",
   "version": "1.0.0",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "googleapis": "^89.0.0"
   },
   "devDependencies": {

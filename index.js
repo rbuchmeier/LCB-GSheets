@@ -1,4 +1,5 @@
 const {google} = require('googleapis');
+const { GSHEET_ID } = require('./config');
 
 async function getSheetsClient() {
   const auth = new google.auth.GoogleAuth({
@@ -23,8 +24,9 @@ async function getSheetsClient() {
         body.comment,
         body.filename,
      ];
+
      sheets.spreadsheets.values.append({
-        spreadsheetId: '1H_Z3GNWuOIb4xtjhToD7OVE3zcZDNDTQ3muX08E4SpU',
+        spreadsheetId: GSHEET_ID,
         range: 'Sheet1!A:D',
         valueInputOption: 'USER_ENTERED',
         resource: {
@@ -40,4 +42,3 @@ async function getSheetsClient() {
         res_x.status(200).send();
      })
   };
-  

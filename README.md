@@ -4,13 +4,24 @@ This project is 1 of 3 repos that are used to create the [Low Carbon Beef App](h
 
 ## Installation
 
-In order to run this project locally you will need:
-- `npm install`
+Install with npm:
+`npm install`
+
+You will also need a `.env` file in the root of the project. If you don't have access to that file, create it, then add:
+`GSHEET_ID=<your google sheet id>`
+You can get the ID from the URL of the sheet (e.g. https://docs.google.com/spreadsheets/d/<id>/edit#gid=0)
+You will also need a header row in the sheet with the following columns:
+- Date Uploaded
+- User
+- Comment
+- File_Name
+
+## Running the app
+
+In order to run this project locally run:
 - `npm run`
 
-## Local Data
-
-There is currently no way to test this except on the production gcp function and gsheet.
+Please be aware which GSheet you are uploading to. Try to stay out of production. There is a gsheet specifically created for testing in the zTEST folder.
 
 ## Deployment
 
