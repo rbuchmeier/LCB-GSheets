@@ -11,9 +11,20 @@ async function getSheetsClient() {
 }
 
  exports.main = async (req_x, res_x) => {
+     const headers = {
+       "Access-Control-Allow-Origin": "*",
+       "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+       "Access-Control-Allow-Headers": "Content-Type",
+       "Access-Control-Max-Age": 2592000, // 30 days
+     };
+     if (req_x.method === "OPTIONS") {
+        res_x.writeHead(204, headers);
+        res_x.end();
+        return;
+     }
      const sheets = await getSheetsClient();
      let body;
-     if (typeof(req_x.body === 'string')) {
+     if (typeof(req_x.body) === 'string') {
         body = JSON.parse(req_x.body);
      } else {
         body = req_x.body;
@@ -37,8 +48,10 @@ async function getSheetsClient() {
      }, (err, res) => {
         if (err) {
            console.log('The API returned an error: ' + err);
-           res_x.status(500).send(err);
+           res_x.writeHead(500, headers);
+           res_x.end(err);
         }
-        res_x.status(200).send();
+        res_x.writeHead(200, headers);
+        res_x.end(JSON.stringify({status: 200, message: "Successfully updated spreadsheet"}));
      })
   };
