@@ -9,6 +9,8 @@
     "@google-cloud/functions-framework": "^2.1.0"
   },
   "scripts": {
-    "start": "npx functions-framework --target=main --port=8080"
+    "start": "npx functions-framework --target=main --port=8080",
+    "deploy-test": "gcloud functions deploy gsheet-comment-test --source=. --project=hallowed-nectar-326021",
+    "deploy-prod": "gcloud functions deploy gsheet-comment --source=. --project=hallowed-nectar-326021"
   }
 }
