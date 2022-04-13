@@ -36,10 +36,12 @@ async function getSheetsClient() {
         body.filename,
      ];
 
+     console.log("body", body);
      let master_gsheet_id = GSHEET_ID;
      await write_row_to_gsheet(row, master_gsheet_id);
 
      if (body.gsheet_id) {
+         console.log("gsheet_id", body.gsheet_id);
          let user_gsheet_id = body.gsheet_id;
          await write_row_to_gsheet(row, user_gsheet_id);
      }
@@ -59,13 +61,5 @@ async function write_row_to_gsheet(row, gsheet_id) {
                   row
             ]
       }
-   }, (err, res) => {
-      if (err) {
-         console.log('The API returned an error: ' + err);
-         res_x.writeHead(500, headers);
-         res_x.end(err);
-      }
-      res_x.writeHead(200, headers);
-      res_x.end(JSON.stringify({status: 200, message: "Successfully updated spreadsheet"}));
    })
 };
